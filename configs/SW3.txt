@@ -1,0 +1,211 @@
+Current configuration : 3174 bytes
+!
+version 12.2(37)SE1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname SW3
+!
+!
+no profinet
+!
+!
+!
+!
+!
+ip routing
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ description *Management PC*
+ switchport access vlan 31
+ switchport mode access
+ switchport port-security
+ switchport port-security violation protect 
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/2
+ description *Server*
+ switchport access vlan 32
+ switchport mode access
+ switchport port-security
+ switchport port-security violation protect 
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/3
+ description *Employee PC*
+ switchport access vlan 33
+ switchport mode access
+ switchport port-security
+ switchport port-security violation protect 
+ spanning-tree portfast
+ spanning-tree bpduguard enable
+!
+interface FastEthernet0/4
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/5
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/6
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/7
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/8
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/9
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/10
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/11
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/12
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/13
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/14
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/15
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/16
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/17
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/18
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/19
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/20
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/21
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/22
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/23
+ description *Unused*
+ shutdown
+!
+interface FastEthernet0/24
+ description *Unused*
+ shutdown
+!
+interface GigabitEthernet0/1
+ no switchport
+ ip address 10.0.30.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ description *Unused*
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan31
+ description *Management PC*
+ mac-address 00d0.d388.b202
+ ip address 192.168.31.1 255.255.255.0
+!
+interface Vlan32
+ description *Server VLAN*
+ mac-address 00d0.d388.b203
+ ip address 192.168.32.1 255.255.255.0
+!
+interface Vlan33
+ description *Employee VLAN*
+ mac-address 00d0.d388.b204
+ ip address 192.168.33.1 255.255.255.0
+!
+router ospf 1
+ router-id 6.6.6.6
+ log-adjacency-changes
+ passive-interface default
+ no passive-interface GigabitEthernet0/1
+ network 10.0.30.0 0.0.0.3 area 0
+ network 192.168.31.0 0.0.0.255 area 0
+ network 192.168.32.0 0.0.0.255 area 0
+ network 192.168.33.0 0.0.0.255 area 0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+!
+end
