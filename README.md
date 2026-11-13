@@ -46,3 +46,7 @@ Each Layer 3 switch performs inter-VLAN routing for its local site and exchanges
 | R3 ↔ SW3 | 10.0.30.0/30 |
 
 ## Routing and Switching
+
+## Network Topology
+
+![Three-Site Network Topology](screenshots/Network-Screenshot.png)
